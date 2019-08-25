@@ -29,6 +29,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rspec-rails'
 gem 'capybara'
 gem 'thin'
+
+# pull info from stock market  (https://www.rubydoc.info/gems/market_beat/0.2.0)
 gem 'market_beat'
 
 # Use ActiveStorage variant
