@@ -30,8 +30,9 @@ gem 'rspec-rails'
 gem 'capybara'
 gem 'thin'
 
-# pull info from stock market  (https://www.rubydoc.info/gems/market_beat/0.2.0)
-gem 'market_beat'
+# pull info from stock market
+gem 'stock_quote', '~> 3.0.0'
+gem 'dotenv-rails'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

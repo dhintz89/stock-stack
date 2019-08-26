@@ -13,6 +13,94 @@
  *= require_tree .
  *= require_self
  */
+ * {
+     margin: 0;
+     padding: 0;
+ }
+ 
+ html, body {
+    background-color: #2b2b2b;
+    color: white;
+ }
+
+ header {
+    display: flex; 
+    flex-shrink: 0;
+    height: 100px;
+    background-color: black;
+ }
+
+ main {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;  
+    height: 100%;
+    width: 100%;
+ }
+
+ footer {
+     height: 50px;
+     background-color: black;
+ }
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column
+}
+
+.site-menu {
+    width: 20%;
+    height: 80px;
+    margin-right: 5px;
+    background-color: blue;
+}
+
 .site-title {
-    font-size: 50px
+    font-size: 2em;
+    justify-content: center;
+    text-align: center; 
+    width: 60%;
+    height: 80px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.profile {
+    width: 20%;
+    height: 80px;
+    margin-left: 5px;
+    background-color: red;
+}
+
+.marquis {
+    position: fixed;
+    overflow: hidden;
+    top: 80px;
+    width: 100%;
+    height: 20px;
+    margin: auto;
+    background-color: green
+}
+
+.marquis p {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    text-align: center;
+    /* Starting position */
+    transform:translateX(100%);
+    /* Apply animation to this element */	
+    animation: marquis 20s linear infinite;
+}
+
+/* define marquis animation */
+@keyframes marquis {
+    0%   { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
 }

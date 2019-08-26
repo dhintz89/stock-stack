@@ -1,4 +1,4 @@
-#Stock-Stack
+# Stock-Stack
 
 Rails site designed to display key data for user-defined watchlists and the broader market in a one-stop-shop format.
 

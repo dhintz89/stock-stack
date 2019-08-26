@@ -29,3 +29,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore .env files with API keys and secrets  (https://iexcloud.io/console/tokens)
+/.env
