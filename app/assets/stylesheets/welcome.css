@@ -1,0 +1,54 @@
+.ipo-window {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    width: 25%;
+    height: 50%;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: aquamarine;
+}
+
+.indicator-chart {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    width: 45%;
+    height: 30%;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: red;
+}
+
+.hotlist {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    width: 25%;
+    height: 90%;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: blue;
+}
+
+.headlines-box {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    width: 25%;
+    height: 45%;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: orange;
+}
+
+.best-performing-box {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    width: 45%;
+    height: 55%;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: green;
+}
