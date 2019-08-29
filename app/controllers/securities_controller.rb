@@ -1,0 +1,3 @@
+class SecuritiesController < ApplicationController
+
+end
