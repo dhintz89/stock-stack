@@ -57,7 +57,13 @@
     width: 20%;
     height: 100px;
     margin-right: 5px;
-    background-color: blue;
+    text-align: center;
+}
+
+.site-menu a {
+    font-size: 1.2em;
+    color: white;
+    display: block;
 }
 
 .site-title {
@@ -72,14 +78,21 @@
 
 .site-title img {
     height: 100px;
-    width: 250px;
+    width: 325px
 }
 
 .profile {
     width: 20%;
     height: 100px;
     margin-left: 5px;
-    background-color: red;
+    text-align: center
+}
+
+.profile img {
+    padding: 3px;
+    height: 80%;
+    max-width: 70%;
+    margin: auto
 }
 
 .marquis {
@@ -127,5 +140,5 @@
 }
 
 .field_with_errors input {
-    background-color: darkred;
+    background-color: darkred
 }
