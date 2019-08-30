@@ -1,1 +1,11 @@
-<h1>Hello <%= @user.name %>
+<h1>Hello <%= @user.name %></h1><br><br><br>
+
+<div class="button_list">
+    <h3><u>Profile Actions</u></h3></br>
+
+    <span><%= link_to "Edit Profile Details", edit_user_path(@user), class: "button" %></span>
+
+    <%= form_tag(signout_path) do %>
+        <%= submit_tag "Sign Out" %>
+    <% end %>
+</div>
