@@ -13,21 +13,9 @@ class CreateSecurities < ActiveRecord::Migration[5.2]
       t.string :latest_source
       t.datetime :latest_update
       t.integer :latest_volume
-      t.integer :iex_realtime_price
-      t.integer :iex_realtime_size
-      t.datetime :iex_last_updated
-      t.integer :delayed_price
-      t.datetime :delayed_price_time
       t.integer :previous_close
       t.integer :change
       t.integer :change_percent
-      t.integer :iex_market_percent
-      t.integer :iex_volume
-      t.integer :avg_total_volume
-      t.integer :iex_bid_price
-      t.integer :iex_bid_size
-      t.integer :iex_ask_price
-      t.integer :iex_ask_size
       t.integer :market_cap
       t.integer :pe_ratio
       t.integer :week52_high

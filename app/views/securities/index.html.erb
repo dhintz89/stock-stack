@@ -1,0 +1,11 @@
+<h1>Securities</h1>
+
+<% StockQuote::Stock.raw_quote("DIS,CRM").each do |symbol, quote_hash| %>
+    <span><%= symbol %>:
+        <% quote_hash.each do |qt, vals| %>
+            <ul><% vals.each do |att, val| %>
+                <li><strong><%= att %>:</strong> <%= val %></li>
+            <% end %></ul>
+        <% end %>
+    </span><br>
+<% end %>
