@@ -1,0 +1,11 @@
+<%= flash[:alert] %>
+
+<div class="form"><h1>Sign In</h1><br>
+
+<%= form_for :user do |f| %>
+    <p><%= f.label :username %></p>
+    <%= f.text_field :username %>
+    <p><%= f.label :password %></p>
+    <%= f.password_field :password %><br><br>
+    <%= f.submit class: 'submit-btn' %>
+<% end %>

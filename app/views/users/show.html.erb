@@ -9,3 +9,8 @@
         <%= submit_tag "Sign Out" %>
     <% end %>
 </div>
+<div style="width:100%;position:relative;text-align:center;top:70px">
+    <%= form_tag("/users/#{@user.id}/delete") do %>
+        <%= submit_tag "Delete Profile" %>
+    <% end %>
+</div>

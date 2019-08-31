@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    before_action :require_login
+    skip_before_action :require_login, only: [:new, :create]
 
     def new
         @user = User.new
@@ -39,8 +41,20 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end
 
+    def destroy
+        @user = User.find(params[:id])
+        @user.destroy
+        redirect_to root_path
+    end
+
     private
     def user_params
         params.require(:user).permit(:name, :username, :password, :password_confirm)
+    end
+
+    def require_login
+        unless logged_in?
+            redirect_to signin_path, alert: "Must be signed in to access the requested page"
+        end
     end
 end
