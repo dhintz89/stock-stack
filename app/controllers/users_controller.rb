@@ -13,6 +13,7 @@ class UsersController < ApplicationController
             render new_user_path
         elsif @user.valid?
             @user.save
+            log_in(@user)
             redirect_to root_path
         else
             render new_user_path
@@ -20,11 +21,11 @@ class UsersController < ApplicationController
     end
 
     def edit
-        @user = User.find(params[:id])
+        @user = current_user
     end
 
     def update
-        @user = User.find(params[:id])
+        @user = current_user
         @user.assign_attributes(name: params[:user][:name], username: params[:user][:username], password: params[:user][:password])
         if params[:user][:password] != params[:user][:password_confirm]
             @user.errors.add(:password, "didn't match confirmation")
@@ -38,11 +39,11 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find(params[:id])
     end
 
     def destroy
-        @user = User.find(params[:id])
+        @user = current_user
+        session.delete(:user_id)
         @user.destroy
         redirect_to root_path
     end

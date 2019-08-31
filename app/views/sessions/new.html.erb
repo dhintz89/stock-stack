@@ -1,3 +1,4 @@
+<%= render partial: 'users/errors', locals: {user: @user} %>
 <%= flash[:alert] %>
 
 <div class="form"><h1>Sign In</h1><br>
@@ -7,5 +8,5 @@
     <%= f.text_field :username %>
     <p><%= f.label :password %></p>
     <%= f.password_field :password %><br><br>
-    <%= f.submit class: 'submit-btn' %>
+    <%= f.submit "Sign In", class: 'submit-btn' %>
 <% end %>

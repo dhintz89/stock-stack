@@ -1,16 +1,16 @@
-<h1>Hello <%= @user.name %></h1><br><br><br>
+<h1>Hello <%= current_user.name %></h1><br><br><br>
 
 <div class="button_list">
     <h3><u>Profile Actions</u></h3></br>
 
-    <span><%= link_to "Edit Profile Details", edit_user_path(@user), class: "button" %></span>
+    <span><%= link_to "Edit Profile Details", edit_user_path(current_user), class: "button" %></span>
 
     <%= form_tag(signout_path) do %>
         <%= submit_tag "Sign Out" %>
     <% end %>
 </div>
 <div style="width:100%;position:relative;text-align:center;top:70px">
-    <%= form_tag("/users/#{@user.id}/delete") do %>
+    <%= form_tag("/users/#{current_user.id}", method: "DELETE") do %>
         <%= submit_tag "Delete Profile" %>
     <% end %>
 </div>

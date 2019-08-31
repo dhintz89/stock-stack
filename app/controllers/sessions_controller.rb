@@ -1,16 +1,23 @@
 class SessionsController < ApplicationController
 
     def new
+        @user = User.new
     end
 
     def create
         @user = User.find_by(username: params[:user][:username])
         if @user
-            return head(:forbidden) unless @user.authenticate(params[:user][:password])
-            log_in(@user)
-            redirect_to root_path
+            if @user.authenticate(params[:user][:password])
+                log_in(@user)
+                redirect_to root_path
+            else
+                @user.errors.add(:password, "Invalid")
+                render 'sessions/new'
+            end
         else
-            render 'sessions/new', message: "Invalid Username"
+            @user = User.new
+            @user.errors.add(:username, "Invalid")
+            render 'sessions/new'
         end
     end
 
