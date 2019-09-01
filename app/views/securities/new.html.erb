@@ -2,7 +2,7 @@
 
 <h1>Securities Lookup</h1>
 
-<%= form_with model: @security, url: './show', method: 'post' do |f| %>
+<%= form_with model: @security, url: './show' do |f| %>
     <p><%= f.label :symbol %></p>
     <%= f.text_field :symbol %>
     <p><%= f.label :company_name %></p>
@@ -10,4 +10,4 @@
     <%= f.submit value: "Lookup Security", class: 'submit-btn' %>
 <% end %>
 <br>
-<h5><i>Only one field required, if both are populated priority will go to symbol.</i></h5>
+<h5><i>Only one field required, if both are entered priority will go to symbol.</i></h5>

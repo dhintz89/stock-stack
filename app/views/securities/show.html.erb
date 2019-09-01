@@ -1,5 +1,31 @@
 <h1><%= @security.symbol %> - <%= @security.company_name %></h1>
 
+<br><br><h2>Summary</h2>
+<ul>
+    <li><%= @security.latest_price %></li>
+    <li><%= @security.latest_volume %></li>
+    <li><%= @security.latest_update %></li>
+    <li><%= @security.change %></li>
+    <li><%= @security.change_percent %></li>
+    <li><%= @security.ytd_change %></li>
+</ul>
+
+<br><br><h2>Actions</h2>
+<div class="button-list">
+    <% if current_user.securities.include?(@security) %>
+        <% current_user.watchlists.select{|wl| wl.security_id.eql?(@security.id)}.each do |watchlist| %>
+            <%= form_tag(new_watchlist_path) do %>
+                <%= watchlist.name %>: <%= submit_tag "Delete from Portfolio" %>
+            <% end %>
+        <% end %>
+    <% else %>
+        <%= form_tag(new_watchlist_path) do %>
+            <%= submit_tag "Add to Portfolio" %>
+        <% end %>
+    <% end %>
+</div>
+
+<br><br><h2>Full Security Data</h2>
 <ul><%= @security.attributes.each do |att, val| %>
     <li><strong><%= att %>:</strong> <%= val %></li>
 <% end %></ul>

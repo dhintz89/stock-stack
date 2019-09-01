@@ -5,22 +5,22 @@ class CreateSecurities < ActiveRecord::Migration[5.2]
       t.string :company_name
       t.string :primary_exchange
       t.string :calculation_price
-      t.integer :open
-      t.integer :close
-      t.integer :high
-      t.integer :low
-      t.integer :latest_price
+      t.real :open
+      t.real :close
+      t.real :high
+      t.real :low
+      t.real :latest_price
       t.string :latest_source
       t.datetime :latest_update
       t.integer :latest_volume
-      t.integer :previous_close
-      t.integer :change
-      t.integer :change_percent
+      t.real :previous_close
+      t.real :change
+      t.real :change_percent
       t.integer :market_cap
       t.integer :pe_ratio
-      t.integer :week52_high
-      t.integer :week52_low
-      t.integer :ytd_change
+      t.real :week52_high
+      t.real :week52_low
+      t.real :ytd_change
 
       t.timestamps
     end

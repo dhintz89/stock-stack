@@ -22,12 +22,11 @@
           <span id="site-title-img"><img src="/assets/StockStack_line2.png" alt="Welcome to StockStack!"></span>
         </div>
         <div class="profile">
-            <%= link_to image_tag(User.first.profile_pic), user_path(User.first.id) %>
+            <%= link_to image_tag('/assets/DanLoki.jpeg'), user_path(User.first.id) %>
             <h3 style="position:relative;bottom:9%"><%= User.first.name %></h3>
         </div>
         <div class="marquis">
-          <% i = 0 %>
-          <p>This will be where all owned Securities will go for current_user</p>
+          <p><%= current_user.securities.collect {|s| "#{s.symbol} - #{s.change_percent}"}.join(" | ") %></p>
         </div>
       </header>
 

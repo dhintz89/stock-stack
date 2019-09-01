@@ -22,6 +22,8 @@ class SecuritiesController < ApplicationController
             @security = Security.look_up_security(security_params)
             if !@security.class.eql?(Security)
                 redirect_to new_security_path, alert: @security
+            else
+                render action: :show
             end
         else
             @security = Security.find(params[:id])

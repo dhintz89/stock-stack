@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :securities, :watchlists
   post '/securities/show' => 'securities#show'
 
+
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
   post '/signout' => 'sessions#destroy'
