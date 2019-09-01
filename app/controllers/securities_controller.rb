@@ -2,11 +2,6 @@ class SecuritiesController < ApplicationController
 
     def index
         @securities = current_user.securities.all
-        # quotes = []
-        # StockQuote::Stock.raw_quote("DIS","CRM").each do |symbol, val_hash|
-        #     Security.new(val_hash) << quotes
-        # end
-        # @securities = quotes
     end
 
     def new

@@ -171,3 +171,25 @@
     text-decoration: none;
 }
 
+table {
+    border: 4px solid #b8b8b8;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #b8b8b8;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 5px;
+}   
+
+th {
+    height: 30px;
+    width: 120px;
+    background-color: #444;
+}
+
+.table-link {
+    color: white;
+}

@@ -1,11 +1,28 @@
-<h1>Securities</h1>
+<h1>My Portfolio</h1>
 
-<% StockQuote::Stock.raw_quote("DIS,CRM").each do |symbol, quote_hash| %>
-    <span><%= symbol %>:
-        <% quote_hash.each do |qt, vals| %>
-            <ul><% vals.each do |att, val| %>
-                <li><strong><%= att %>:</strong> <%= val %></li>
-            <% end %></ul>
-        <% end %>
-    </span><br>
-<% end %>
+<table id="sec-index-table">
+    <tr>
+        <th>Symbol</th>
+        <th>Company</th>
+        <th>Latest Volume</th>
+        <th>Latest Price</th>
+        <th>Price Change</th>
+        <th>Percent Change</th>
+        <th>Change YTD</th>
+        <th>Watchlists</th>
+        <th>Info & Actions</th>
+    <tr>
+    <% @securities.each do |sec| %>
+        <tr>
+            <td><%= sec.symbol %></td>
+            <td><%= sec.company_name %></td>
+            <td><%= sec.latest_volume %></td>
+            <td><%= sec.latest_price %></td>
+            <td><%= sec.change %></td>
+            <td><%= sec.change_percent %></td>
+            <td><%= sec.ytd_change %></td>
+            <td><%= sec.watchlists.count %></td>
+            <td><%= link_to "See Details", security_path(sec), class:"table-link" %></td>
+        </tr>
+    <% end %>
+</table>
