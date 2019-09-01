@@ -1,5 +1,5 @@
 <h1><%= @security.symbol %> - <%= @security.company_name %></h1>
 
-<%= @security.attributes.each do |att, val| %>
-    <p><strong><%= att %>:</strong> <%= val %></p>
-<% end %>
+<ul><%= @security.attributes.each do |att, val| %>
+    <li><strong><%= att %>:</strong> <%= val %></li>
+<% end %></ul>

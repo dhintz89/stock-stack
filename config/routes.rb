@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'application#welcome'
   resources :users, except: [:index]
   resources :securities, :watchlists
+  post '/securities/show' => 'securities#show'
 
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'

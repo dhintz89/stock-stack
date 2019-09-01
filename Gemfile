@@ -29,6 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rspec-rails'
 gem 'capybara'
 gem 'thin'
+gem 'pry'
 
 # pull info from stock market
 gem 'stock_quote', '~> 3.0.0'
