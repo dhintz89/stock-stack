@@ -2,7 +2,7 @@
 
 <h1>Securities Lookup</h1>
 
-<%= form_with model: @security, url: './show' do |f| %>
+<%= form_with model: @security, url: './show', local: true do |f| %>
     <p><%= f.label :symbol %></p>
     <%= f.text_field :symbol %>
     <p><%= f.label :company_name %></p>
