@@ -23,6 +23,12 @@ class SecuritiesController < ApplicationController
         end
     end
 
+    def destroy
+        @security = Security.find(params[:id])
+        @security.watchlists.where("user_id = ?", current_user.id).destroy_all
+        redirect_to securities_path, alert: "Requested Security has been removed from all watchlists"
+    end
+
     def show
         if params.include?(:security)
             @security = Security.look_up_security(security_params)
@@ -35,8 +41,6 @@ class SecuritiesController < ApplicationController
             @security = Security.find(params[:id])
         end
     end
-                
-        # @security = StockQuote::Stock.quote("DIS")
 
     private
     def security_params
