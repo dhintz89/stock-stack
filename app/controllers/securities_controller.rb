@@ -1,7 +1,7 @@
 class SecuritiesController < ApplicationController
 
     def index
-        @securities = current_user.securities.all
+        @securities = current_user.securities.uniq
     end
 
     def new
@@ -10,6 +10,17 @@ class SecuritiesController < ApplicationController
 
     def create
         @security
+    end
+
+    def update
+        @security = Security.find(params[:id])
+        @security.refresh_security(StockQuote::Stock.raw_quote(@security.symbol)["#{@security.symbol}"]["quote"])
+        if @security.valid?
+            @security.save
+            redirect_to security_path(@security), alert: "Security data has been updated successfully"
+        else
+            render 'securities/show'
+        end
     end
 
     def show
@@ -29,6 +40,6 @@ class SecuritiesController < ApplicationController
 
     private
     def security_params
-        params.require(:security).permit(:symbol, :company_name, :primary_exchange, :calculation_price, :open, :close, :high, :low, :latest_price, :latest_source, :latest_update, :latest_volume, :previous_close, :change, :change_percent, :market_cap, :pe_ratio, :week52_high, :week52_low, :ytd_change)
+        params.require(:security).permit(:symbol, :companyName, :primaryExchange, :calculationPrice, :open, :close, :high, :low, :latestPrice, :latestSource, :latestUpdate, :latestVolume, :previousClose, :change, :changePercent, :marketCap, :peRatio, :week52High, :week52Low, :ytdChange)
     end
 end

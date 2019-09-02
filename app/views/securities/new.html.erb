@@ -5,8 +5,8 @@
 <%= form_with model: @security, url: './show', local: true do |f| %>
     <p><%= f.label :symbol %></p>
     <%= f.text_field :symbol %>
-    <p><%= f.label :company_name %></p>
-    <%= f.text_field :company_name %><br>
+    <p><%= f.label :companyName %></p>
+    <%= f.text_field :companyName %><br>
     <%= f.submit value: "Lookup Security", class: 'submit-btn' %>
 <% end %>
 <br>

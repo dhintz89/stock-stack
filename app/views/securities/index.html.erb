@@ -15,14 +15,16 @@
     <% @securities.each do |sec| %>
         <tr>
             <td><%= sec.symbol %></td>
-            <td><%= sec.company_name %></td>
-            <td><%= sec.latest_volume %></td>
-            <td><%= sec.latest_price %></td>
+            <td><%= sec.companyName %></td>
+            <td><%= sec.latestVolume %></td>
+            <td><%= sec.latestPrice %></td>
             <td><%= sec.change %></td>
-            <td><%= sec.change_percent %></td>
-            <td><%= sec.ytd_change %></td>
+            <td><%= sec.changePercent %></td>
+            <td><%= sec.ytdChange %></td>
             <td><%= sec.watchlists.count %></td>
             <td><%= link_to "See Details", security_path(sec), class:"table-link" %></td>
         </tr>
     <% end %>
 </table>
+
+<%= link_to "Add a new Security", new_security_path %>
