@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users, except: [:index]
   resources :securities, :watchlists
   post '/securities/show' => 'securities#show'
+  post '/securities/:id' => 'securities#refresh'
 
 
   get '/signin' => 'sessions#new'

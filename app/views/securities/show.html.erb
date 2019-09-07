@@ -43,7 +43,7 @@
 <%= alert %>
 
 <br><br><h2>Full Security Data</h2>
-<%= form_for @security do |f| %>
+<%= form_for(@security, method: 'POST') do |f| %>
     <%= f.submit "Refresh Data", class: 'submit-btn' %>
 <% end %>
 
