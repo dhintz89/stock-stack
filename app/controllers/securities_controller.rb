@@ -4,8 +4,16 @@ class SecuritiesController < ApplicationController
         @securities = current_user.securities.uniq
     end
 
-    def new
+    def find
         @security = Security.new
+    end
+
+    def new
+        if !params[:sec_id].nil? && !params[:sec_id].empty?
+            @security = Security.find(params[:sec_id])
+        else
+            @security ||= Security.new(flash[:passed_sec])
+        end
     end
 
     def create
@@ -19,6 +27,7 @@ class SecuritiesController < ApplicationController
             @security.save
             redirect_to security_path(@security), alert: "Security data has been updated successfully"
         else
+            flash[:alert] = "Security Symbol not found - could not update"
             render 'securities/show'
         end
     end
@@ -33,8 +42,9 @@ class SecuritiesController < ApplicationController
         if params.include?(:security)
             @security = Security.look_up_security(security_params)
             if !@security.class.eql?(Security)
-                redirect_to new_security_path, alert: @security
+                redirect_to securities_find_path, alert: @security
             else
+                flash[:passed_sec] = @security
                 render action: :show
             end
         else

@@ -1,0 +1,13 @@
+<%= alert %>
+
+<h1>Securities Lookup</h1>
+
+<%= form_for @security, url: './show', local: true do |f| %>
+    <p><%= f.label :symbol %></p>
+    <%= f.text_field :symbol %>
+    <p><%= f.label :companyName, "Company Name" %></p>
+    <%= f.text_field :companyName %><br><br>
+    <%= f.submit value: "Lookup Security", class: 'submit-btn' %>
+<% end %>
+<br>
+<h5><i>Only one field required, if both are entered priority will go to symbol.</i></h5>

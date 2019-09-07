@@ -1,6 +1,7 @@
 class Security < ApplicationRecord
     has_many :watchlists
     has_many :users, through: :watchlists
+    accepts_nested_attributes_for :watchlists
 
     validates :symbol, :companyName, presence: true
 

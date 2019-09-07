@@ -135,6 +135,16 @@
     background-color: #CFCDCD;
 }
 
+.form input[type=checkbox] {
+    width: 15%;
+}
+
+.form textarea {
+    width: 75%;
+    height: 6em;
+    background-color: #CFCDCD;
+}
+
 .form input.submit-btn {
     width: 15%;
     height: 30px

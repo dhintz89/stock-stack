@@ -1,13 +1,15 @@
+<%= flash[:alert] %>
+
 <h1><%= @security.symbol %> - <%= @security.companyName %></h1>
 
 <br><br><h2>Summary</h2>
 <ul>
-    <li><%= @security.latestPrice %></li>
-    <li><%= @security.latestVolume %></li>
-    <li><%= @security.latestUpdate %></li>
-    <li><%= @security.change %></li>
-    <li><%= @security.changePercent %></li>
-    <li><%= @security.ytdChange %></li>
+    <li>Latest Price: <%= @security.latestPrice %></li>
+    <li>Latest Volume: <%= @security.latestVolume %></li>
+    <li>Latest Update: <%= @security.latestUpdate %></li>
+    <li>Change: <%= @security.change %></li>
+    <li>Change Percent: <%= @security.changePercent %></li>
+    <li>YTD Change: <%= @security.ytdChange %></li>
 </ul>
 
 
@@ -25,7 +27,9 @@
             <%= submit_tag "Remove from Portfolio" %>
         <% end %><br>
     <% else %>
-        <%= form_tag(new_watchlist_path, method: 'GET') do %>
+        <%= form_tag(new_security_path, method: 'GET') do %>
+            <% flash.keep(:passed_sec) %>
+            <%= hidden_field_tag :sec_id, @security.id %>
             <%= submit_tag "Add to Portfolio" %>
         <% end %>
     <% end %>
