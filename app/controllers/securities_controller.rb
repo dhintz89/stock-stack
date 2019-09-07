@@ -17,10 +17,16 @@ class SecuritiesController < ApplicationController
     end
 
     def create
-        @security
+        @security ||= Security.new(flash[:passed_sec])
+        binding.pry
     end
 
     def update
+        @security = Security.find(params[:id])
+        binding.pry
+    end
+
+    def refresh
         @security = Security.find(params[:id])
         @security.refresh_security(StockQuote::Stock.raw_quote(@security.symbol)["#{@security.symbol}"]["quote"])
         if @security.valid?
@@ -54,6 +60,6 @@ class SecuritiesController < ApplicationController
 
     private
     def security_params
-        params.require(:security).permit(:symbol, :companyName, :primaryExchange, :calculationPrice, :open, :close, :high, :low, :latestPrice, :latestSource, :latestUpdate, :latestVolume, :previousClose, :change, :changePercent, :marketCap, :peRatio, :week52High, :week52Low, :ytdChange)
+        params.require(:security).permit(:watchlist_ids[], :symbol, :companyName, :primaryExchange, :calculationPrice, :open, :close, :high, :low, :latestPrice, :latestSource, :latestUpdate, :latestVolume, :previousClose, :change, :changePercent, :marketCap, :peRatio, :week52High, :week52Low, :ytdChange)
     end
 end

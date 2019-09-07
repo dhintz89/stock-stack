@@ -1,4 +1,4 @@
-<%= flash[:alert] %>
+<%= alert %>
 
 <h1><%= @security.symbol %> - <%= @security.companyName %></h1>
 
@@ -23,6 +23,10 @@
                 <li><%= watchlist.name %>: <%= watchlist.description %><%= submit_tag "Remove from Watchlist" %></li>
             <% end %></ul><br>
         <% end %>
+        <%= form_tag(new_security_path, method: 'GET') do %>
+            <%= hidden_field_tag :sec_id, @security.id %>
+            <%= submit_tag "Add to additional Watchlists" %>
+        <% end %><br>
         <%= form_with(URL: "/securities/#{@security.id}", method: 'DELETE') do %>
             <%= submit_tag "Remove from Portfolio" %>
         <% end %><br>

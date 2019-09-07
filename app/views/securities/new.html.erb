@@ -1,7 +1,8 @@
 <div class='form'><h1>Add to Watchlists</h1><br>
 <%= form_for @security do |f| %>
+    <% flash.keep(:passed_sec) %>
     <p><%= f.label "Select Watchlist(s) for #{@security.symbol}:" %></p>
-    <%= f.collection_check_boxes :watchlists, current_user.watchlists.all, :id, :name %>
+    <%= f.collection_check_boxes(:watchlist_ids, current_user.watchlists.all, :id, :name, {checked: @security.watchlist_ids.map(&:to_param)}) %>
     <br><br>
     <p><%= f.label :new_watchlist, "Or start a new Watchlist for #{@security.symbol}:" %></p>
     <%= f.fields_for :watchlists, @security.watchlists.build do |wl| %>
@@ -11,6 +12,6 @@
         <%= wl.text_area :description %>
     <% end %>
     <br><br>
-    <%= f.submit class: 'submit-btn' %>
+    <%= f.submit "Add to Selected", class: 'submit-btn' %>
 <% end %>
 </div>
