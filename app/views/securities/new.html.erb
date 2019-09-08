@@ -1,17 +1,13 @@
-<div class='form'><h1>Add to Watchlists</h1><br>
+<%= alert %>
+
+<h1>Securities Lookup</h1>
+
 <%= form_for @security do |f| %>
-    <% flash.keep(:passed_sec) %>
-    <p><%= f.label "Select Watchlist(s) for #{@security.symbol}:" %></p>
-    <%= f.collection_check_boxes(:watchlist_ids, current_user.watchlists.all, :id, :name, {checked: @security.watchlist_ids.map(&:to_param)}) %>
-    <br><br>
-    <p><%= f.label :new_watchlist, "Or start a new Watchlist for #{@security.symbol}:" %></p>
-    <%= f.fields_for :watchlists, @security.watchlists.build do |wl| %>
-        <p><%= wl.label :name %></p>
-        <%= wl.text_field :name %>
-        <p><%= wl.label :description %></p>
-        <%= wl.text_area :description %>
-    <% end %>
-    <br><br>
-    <%= f.submit "Add to Selected", class: 'submit-btn' %>
+    <p><%= f.label :symbol %></p>
+    <%= f.text_field :symbol %>
+    <p><%= f.label :companyName, "Company Name" %></p>
+    <%= f.text_field :companyName %><br><br>
+    <%= f.submit value: "Lookup Security", class: 'submit-btn' %>
 <% end %>
-</div>
+<br>
+<h5><i>Only one field required, if both are entered priority will go to symbol.</i></h5>

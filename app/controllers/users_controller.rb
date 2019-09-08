@@ -39,6 +39,7 @@ class UsersController < ApplicationController
     end
 
     def show
+        @securities = current_user.securities.uniq
     end
 
     def destroy

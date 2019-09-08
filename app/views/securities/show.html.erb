@@ -2,7 +2,7 @@
 
 <h1><%= @security.symbol %> - <%= @security.companyName %></h1>
 
-<br><br><h2>Summary</h2>
+<br><br><h2><u>Summary</u></h2><br>
 <ul>
     <li>Latest Price: <%= @security.latestPrice %></li>
     <li>Latest Volume: <%= @security.latestVolume %></li>
@@ -14,25 +14,25 @@
 
 
 
-<br><br><h2>Actions</h2>
-<div class="button-list">
+<br>
+<div class="button_list">
+<h2><u>Actions</u></h2>
     <% if current_user.securities.include?(@security) %><br>
-        <h4>Associated Watchlists:</h4><br>
+        <h4>Associated Watchlists:</h4>
         <% current_user.watchlists.select{|wl| wl.security_id.eql?(@security.id)}.each do |watchlist| %>
             <ul><%= form_with(URL: "/watchlists/#{watchlist.id}", method: 'DELETE') do %>
                 <li><%= watchlist.name %>: <%= watchlist.description %><%= submit_tag "Remove from Watchlist" %></li>
             <% end %></ul><br>
         <% end %>
-        <%= form_tag(new_security_path, method: 'GET') do %>
+        <%= form_tag(new_watchlist_path, method: 'GET') do %>
             <%= hidden_field_tag :sec_id, @security.id %>
-            <%= submit_tag "Add to additional Watchlists" %>
-        <% end %><br>
+            <%= submit_tag "Add Watchlists" %>
+        <% end %>
         <%= form_with(URL: "/securities/#{@security.id}", method: 'DELETE') do %>
             <%= submit_tag "Remove from Portfolio" %>
         <% end %><br>
     <% else %>
-        <%= form_tag(new_security_path, method: 'GET') do %>
-            <% flash.keep(:passed_sec) %>
+        <%= form_tag(new_watchlist_path, method: 'GET') do %>
             <%= hidden_field_tag :sec_id, @security.id %>
             <%= submit_tag "Add to Portfolio" %>
         <% end %>
@@ -40,13 +40,13 @@
 </div>
 
 <%= render partial: 'users/errors', locals: {record:@security} %>
-<%= alert %>
-
-<br><br><h2>Full Security Data</h2>
-<%= form_for(@security, method: 'POST') do |f| %>
+<%= flash[:message] %>
+<br>
+<h2><u>Full Security Data</u></h2>
+<span style="position:relative;bottom:22px;left:155px"><%= form_for(@security, method: 'POST') do |f| %>
     <%= f.submit "Refresh Data", class: 'submit-btn' %>
-<% end %>
+<% end %></span>
 
-<ol><% @security.attributes.each do |att, val| %>
+<ul><% @security.attributes.each do |att, val| %>
     <li><strong><%= att %>:</strong> <%= val %></li>
-<% end %></ol>
+<% end %></ul>

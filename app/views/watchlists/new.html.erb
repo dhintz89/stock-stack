@@ -1,4 +1,15 @@
-<h1>Add to Watchlist</h1>
+<div class='form'><h1>Create a New Watchlist</h1><br>
+    <%= form_for @watchlist do |f| %>
+        <%= f.hidden_field :security_id, value: @sec_id %>
+        <p><%= f.label "Choose a Watchlist" %></p>
+
+        <p><%= f.label :name, "Or create a new Watchlist" %></p>
+        <%= f.text_field :name %>
+        <p><%= f.label :description %></p>
+        <%= f.text_area :description %><br><br>
+        <%= f.submit class: 'submit-btn' %>
+    <% end %>
+</div>
 
 list of existing user-watchlists
 create new user-watchlist
