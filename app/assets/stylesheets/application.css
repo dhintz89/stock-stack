@@ -144,6 +144,10 @@
     width: 5%;
 }
 
+.form input[type=radio] {
+    width: 5%;
+}
+
 .form textarea {
     width: 75%;
     height: 6em;
@@ -152,7 +156,7 @@
 
 .form input.submit-btn {
     width: 15%;
-    height: 30px
+    height: 30px;
 }
 
 .field_with_errors input {
@@ -177,9 +181,14 @@
     clear: both;
 }
 
-.button_list form input {
+/* .button_list form input {
     width: 10%;
     height: 25px;
+    font-size: 0.9vw;
+} */
+
+.button_list a {
+    color: white;
 }
 
 .button {

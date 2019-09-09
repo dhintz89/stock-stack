@@ -1,0 +1,7 @@
+<h1><%= @watchlists.first.name %></h1>
+<p><%= @watchlists.first.description %></p>
+<br>
+<h2>Securities</h2>
+<ul><% @watchlists.each do |wl| %>
+    <li><%= wl.security.symbol %></li>
+<% end %></ul>

@@ -17,16 +17,23 @@ class WatchlistsController < ApplicationController
 
     def create
         @watchlist = Watchlist.find_by(name: watchlist_params[:name], security_id: watchlist_params[:security_id], user_id: current_user.id)
+        binding.pry
         if @watchlist
             redirect_to security_path(@watchlist.security_id), alert: "Security already associated with Watchlist"
         else
-            @watchlist = Watchlist.create(name: watchlist_params[:name], security_id: watchlist_params[:security_id], user_id: current_user.id)
-            redirect_to security_path(@watchlist.security_id), alert: "Security added to Watchlist"
+            mod_watchlist = Watchlist.find_by(name: watchlist_params[:name], user_id: current_user.id)
+            if mod_watchlist
+                @watchlist = Watchlist.create(name: mod_watchlist.name, description: mod_watchlist.description, security_id: watchlist_params[:security_id], user_id: current_user.id)
+                redirect_to security_path(@watchlist.security_id), alert: "Security added to Watchlist"
+            else
+                @watchlist = Watchlist.create(name: watchlist_params[:name], description: watchlist_params[:description], security_id: watchlist_params[:security_id], user_id: current_user.id)
+                redirect_to security_path(@watchlist.security_id), alert: "Watchlist created and Security added"
+            end
         end
     end
 
     def show
-        
+        @watchlists = current_user.watchlists.select {|wl| wl.name == Watchlist.find(params[:id]).name}
     end
 
     def destroy

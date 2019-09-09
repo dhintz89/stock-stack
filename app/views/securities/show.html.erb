@@ -21,7 +21,7 @@
         <h4>Associated Watchlists:</h4>
         <% current_user.watchlists.select{|wl| wl.security_id.eql?(@security.id)}.each do |watchlist| %>
             <ul><%= form_with(URL: "/watchlists/#{watchlist.id}", method: 'DELETE') do %>
-                <li><%= watchlist.name %>: <%= watchlist.description %><%= submit_tag "Remove from Watchlist" %></li>
+                <li><strong><%= link_to watchlist.name, watchlist_path(watchlist) %>:</strong>&nbsp;&nbsp; <i><%= watchlist.description %></i>&nbsp;&nbsp;-&nbsp; <%= submit_tag "Remove from Watchlist" %></li>
             <% end %></ul><br>
         <% end %>
         <%= form_tag(new_watchlist_path, method: 'GET') do %>
@@ -29,7 +29,7 @@
             <%= submit_tag "Add Watchlists" %>
         <% end %>
         <%= form_with(URL: "/securities/#{@security.id}", method: 'DELETE') do %>
-            <%= submit_tag "Remove from Portfolio" %>
+            <%= submit_tag "Remove from Portfolio", class: "submit-btn" %>
         <% end %><br>
     <% else %>
         <%= form_tag(new_watchlist_path, method: 'GET') do %>

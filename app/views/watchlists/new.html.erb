@@ -1,15 +1,18 @@
 <div class='form'><h1>Create a New Watchlist</h1><br>
     <%= form_for @watchlist do |f| %>
         <%= f.hidden_field :security_id, value: @sec_id %>
-        <p><%= f.label "Choose a Watchlist" %></p>
-
-        <p><%= f.label :name, "Or create a new Watchlist" %></p>
+        <p><%= f.label "Create a new Watchlist:" %></p>
+        <p><%= f.label :name %></p>
         <%= f.text_field :name %>
         <p><%= f.label :description %></p>
         <%= f.text_area :description %><br><br>
+        
+
+        <p><%= f.label "Or choose existing Watchlist to add Security:" %></p>
+        <% current_user.watchlists.map{|wl| wl.name}.uniq.each do |name| %>
+            <p><%= f.radio_button :name, name %><%= f.label :name, name %></p>
+        <% end %>
+        <br>
         <%= f.submit class: 'submit-btn' %>
     <% end %>
 </div>
-
-list of existing user-watchlists
-create new user-watchlist
