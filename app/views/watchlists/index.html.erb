@@ -1,7 +1,7 @@
 <h1>Watchlists</h1>
 
 <ul><% @watchlists.each do |wl| %>
-    <li><%= wl.name %> - <%= wl.description %> - <%= wl.security.symbol %> - <%= wl.security.companyName %></li>
+    <li><%= wl.name %> - <%= wl.description %></li>
 <% end %></ul>
 
 <%= form_tag new_watchlist_path, method: "Get" do %>

@@ -1,7 +1,11 @@
-<h1><%= @watchlists.first.name %></h1>
-<p><%= @watchlists.first.description %></p>
+<h1><%= @watchlist.name %></h1>
+<p><i><%= @watchlist.description %></i></p>
 <br>
-<h2>Securities</h2>
-<ul><% @watchlists.each do |wl| %>
-    <li><%= wl.security.symbol %></li>
+<h2>Securities (<%= Watchlist.roll_up_secs(@watchlist).count %>)</h2>
+<ul><% Watchlist.roll_up_secs(@watchlist).each do |sec| %>
+    <li><%= sec.symbol %> -<%= sec.change %> - <%= sec.changePercent %> - <%= sec.previousClose %></li>
 <% end %></ul>
+<br>
+
+<h3>Total Value: <%= Watchlist.total_up(@watchlist, "latestPrice") %></h3>
+<h3>Total Change %: <%= Watchlist.total_change(@watchlist) %></h3>

@@ -17,7 +17,6 @@ class WatchlistsController < ApplicationController
 
     def create
         @watchlist = Watchlist.find_by(name: watchlist_params[:name], security_id: watchlist_params[:security_id], user_id: current_user.id)
-        binding.pry
         if @watchlist
             redirect_to security_path(@watchlist.security_id), alert: "Security already associated with Watchlist"
         else
@@ -33,7 +32,8 @@ class WatchlistsController < ApplicationController
     end
 
     def show
-        @watchlists = current_user.watchlists.select {|wl| wl.name == Watchlist.find(params[:id]).name}
+        # @watchlists = current_user.watchlists.select {|wl| wl.name == Watchlist.find(params[:id]).name}
+        @watchlist = Watchlist.find(params[:id])
     end
 
     def destroy

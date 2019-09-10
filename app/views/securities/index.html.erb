@@ -1,4 +1,4 @@
-<h1>My Portfolio</h1>
+<h1>Recently Searched Securities</h1>
 
 <table id="sec-index-table">
     <tr>
@@ -9,20 +9,20 @@
         <th>Price Change</th>
         <th>Percent Change</th>
         <th>Change YTD</th>
-        <th>Watchlists</th>
-        <th>Info & Actions</th>
+        <th>In Portfolio</th>
+        <th>Last Update</th>
     <tr>
     <% @securities.each do |sec| %>
         <tr>
-            <td><%= sec.symbol %></td>
+            <td><%= link_to sec.symbol, security_path(sec), class:"table-link" %></td>
             <td><%= sec.companyName %></td>
             <td><%= sec.latestVolume %></td>
             <td><%= sec.latestPrice %></td>
             <td><%= sec.change %></td>
             <td><%= sec.changePercent %></td>
             <td><%= sec.ytdChange %></td>
-            <td><%= sec.watchlists.count %></td>
-            <td><%= link_to "See Details", security_path(sec), class:"table-link" %></td>
+            <td><%= sec.watchlists.count > 0 ? "Yes" : "No" %></td>
+            <td><%= sec.updated_at.strftime('%b %e, %Y at %l:%M%P') %></td>
         </tr>
     <% end %>
 </table>
