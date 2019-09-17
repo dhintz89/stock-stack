@@ -1,13 +1,13 @@
 class WatchlistsController < ApplicationController
 
     # include securities as child objects in index and/or show page  (index - watchlist_securities.each....)
-    # include function to build new watchlist - enter name/desc - then enter company symbols
 
     # refresh watchlist -> watchlist_securities.each update(...)
     # flow: user views a security -> @security = security.new(...)       user then adds to a watchlist -> @security.watchlist = ... | @security.save
 
     def index
-        @watchlists = current_user.watchlists.all
+        wl = current_user.watchlists.select(:name).distinct
+        @watchlists = wl.map {|wlname| Watchlist.find_by(name: wlname.name) }
     end
 
     def new
@@ -31,8 +31,19 @@ class WatchlistsController < ApplicationController
         end
     end
 
+    def edit
+        @watchlist = Watchlist.find(params[:id])
+    end
+
+    def update
+        @watchlist = Watchlist.find(params[:id])
+        Watchlist.roll_up(@watchlist).each do |wl|
+            wl.update(watchlist_params)
+        end
+        redirect_to watchlist_path(@watchlist)
+    end
+
     def show
-        # @watchlists = current_user.watchlists.select {|wl| wl.name == Watchlist.find(params[:id]).name}
         @watchlist = Watchlist.find(params[:id])
     end
 

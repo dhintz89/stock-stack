@@ -1,0 +1,10 @@
+<div class='form'><h1>Edit Watchlist</h1><br>
+    <%= form_for @watchlist do |f| %>
+        <p><%= f.label :name %></p>
+        <%= f.text_field :name %>
+        <p><%= f.label :description %></p>
+        <%= f.text_area :description %>
+        <br>
+        <%= f.submit class: 'submit-btn' %>
+    <% end %>
+</div>

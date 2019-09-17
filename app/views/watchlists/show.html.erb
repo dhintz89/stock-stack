@@ -1,5 +1,9 @@
 <h1><%= @watchlist.name %></h1>
 <p><i><%= @watchlist.description %></i></p>
+<%= form_tag(edit_watchlist_path(@watchlist), method:'GET') do %>
+    <%= submit_tag "Edit Watchlist" %>
+<% end %>
+    
 <br>
 <h2>Securities (<%= Watchlist.roll_up_secs(@watchlist).count %>)</h2>
 <ul><% Watchlist.roll_up_secs(@watchlist).each do |sec| %>

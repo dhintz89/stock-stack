@@ -1,9 +1,5 @@
 <h1>Watchlists</h1>
 
 <ul><% @watchlists.each do |wl| %>
-    <li><%= wl.name %> - <%= wl.description %></li>
+    <li><%= link_to wl.name, watchlist_path(wl) %> - <%= wl.description %> - <%= Watchlist.roll_up(wl).count %> securities worth $ <%= Watchlist.total_up(wl, 'latestPrice') %>, a total change of <%= Watchlist.total_change(wl) %></li>
 <% end %></ul>
-
-<%= form_tag new_watchlist_path, method: "Get" do %>
-    <%= submit_tag "Create New Watchlist" %>
-<% end %>
