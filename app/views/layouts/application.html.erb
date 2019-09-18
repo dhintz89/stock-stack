@@ -26,7 +26,9 @@
             <h3 style="position:relative;bottom:9%"><%= User.first.name %></h3>
         </div>
         <div class="marquis">
-          <p><%= current_user.securities.collect {|s| "#{s.symbol}: #{s.changePercent}"}.uniq.join(" || ") %></p>
+          <% if logged_in? %>
+            <p><%= current_user.securities.collect {|s| "#{s.symbol}: #{s.changePercent}"}.uniq.join(" || ") %></p>
+          <% end %>
         </div>
       </header>
 

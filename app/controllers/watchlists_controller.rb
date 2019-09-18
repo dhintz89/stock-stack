@@ -57,4 +57,8 @@ class WatchlistsController < ApplicationController
         params.require(:watchlist).permit(:name, :description, :security_id)
     end
 
+    def set_user
+        UserInfo.current_user = session[:user]
+    end
+
 end

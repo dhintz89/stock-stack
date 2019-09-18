@@ -1,13 +1,14 @@
 class Watchlist < ApplicationRecord
     belongs_to :user
     belongs_to :security
+    scope :rolled_up, ->(wl) { where("name = ? AND user_id = ?", wl.name, wl.user_id)}
 
-    def self.roll_up(wl)
-        Watchlist.where("name = ? AND user_id = ?", wl.name, wl.user_id)
-    end
+    # def self.roll_up(wl)
+    #     Watchlist.where("name = ? AND user_id = ?", wl.name, wl.user_id)
+    # end
 
     def self.roll_up_secs(wl)
-        roll_up(wl).map {|wl| wl.security}
+        rolled_up(wl).map {|wl| wl.security}
     end
 
     def self.full_sec_attributes(wl, att)
