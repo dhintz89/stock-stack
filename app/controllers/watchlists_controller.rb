@@ -1,4 +1,5 @@
 class WatchlistsController < ApplicationController
+    before_action :require_login
 
     # include securities as child objects in index and/or show page  (index - watchlist_securities.each....)
 

@@ -54,9 +54,4 @@ class UsersController < ApplicationController
         params.require(:user).permit(:name, :username, :password, :password_confirm)
     end
 
-    def require_login
-        unless logged_in?
-            redirect_to signin_path, alert: "Must be signed in to access the requested page"
-        end
-    end
 end

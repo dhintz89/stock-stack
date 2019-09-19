@@ -1,4 +1,5 @@
 class SecuritiesController < ApplicationController
+    before_action :require_login, except: [:index]
 
     def index
         if params[:watchlist_id]
