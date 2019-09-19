@@ -19,12 +19,14 @@
             <td><%= sec.latestVolume %></td>
             <td><%= sec.latestPrice %></td>
             <td><%= sec.change %></td>
-            <td><%= sec.changePercent %></td>
+            <td><%= sec.changePercent.to_f.round(3) %>%</td>
             <td><%= sec.ytdChange %></td>
             <td><%= sec.watchlists.count > 0 ? "Yes" : "No" %></td>
             <td><%= sec.updated_at.strftime('%b %e, %Y at %l:%M%P') %></td>
         </tr>
     <% end %>
 </table>
-
+<%= form_tag(new_security_path, method: 'GET', enforce_utf8: false) do %>
+    <%= submit_tag "Add to Watchlist", name: nil %>
+<% end %>
 <%= link_to "Add a new Security", new_security_path %>

@@ -5,14 +5,11 @@
 <br><br><h2><u>Summary</u></h2><br>
 <ul>
     <li>Latest Price: <%= @security.latestPrice %></li>
+    <li>Change: <%= @security.change %> (<%= @security.changePercent.to_f.round(3) %>%)</li>
+    <li>YTD Change: <%= @security.ytdChange %></li>
     <li>Latest Volume: <%= @security.latestVolume %></li>
     <li>Latest Update: <%= @security.latestUpdate %></li>
-    <li>Change: <%= @security.change %></li>
-    <li>Change Percent: <%= @security.changePercent %></li>
-    <li>YTD Change: <%= @security.ytdChange %></li>
 </ul>
-
-
 
 <br>
 <div class="button_list">
@@ -24,17 +21,17 @@
                 <li><strong><%= link_to watchlist.name, watchlist_path(watchlist) %>:</strong>&nbsp;&nbsp; <i><%= watchlist.description %></i>&nbsp;&nbsp;-&nbsp; <%= submit_tag "Remove from Watchlist" %></li>
             <% end %></ul><br>
         <% end %>
-        <%= form_tag(new_watchlist_path, method: 'GET') do %>
+        <%= form_tag(new_watchlist_path, method: 'GET', enforce_utf8: false) do %>
             <%= hidden_field_tag :sec_id, @security.id %>
-            <%= submit_tag "Add Watchlists" %>
+            <%= submit_tag "Add to Watchlist", name: nil %>
         <% end %>
         <%= form_with(URL: "/securities/#{@security.id}", method: 'DELETE') do %>
             <%= submit_tag "Remove from Portfolio", class: "submit-btn" %>
         <% end %><br>
     <% else %>
-        <%= form_tag(new_watchlist_path, method: 'GET') do %>
+        <%= form_tag(new_watchlist_path, method: 'GET', enforce_utf8: false) do %>
             <%= hidden_field_tag :sec_id, @security.id %>
-            <%= submit_tag "Add to Portfolio" %>
+            <%= submit_tag "Add to Portfolio", name: nil %>
         <% end %>
     <% end %>
 </div>

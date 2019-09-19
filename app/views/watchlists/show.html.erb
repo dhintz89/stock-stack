@@ -1,15 +1,16 @@
 <h1><%= @watchlist.name %></h1>
 <p><i><%= @watchlist.description %></i></p>
-<%= form_tag(edit_watchlist_path(@watchlist), method:'GET') do %>
-    <%= submit_tag "Edit Watchlist" %>
+<%= form_tag(edit_watchlist_path(@watchlist), method:'GET', enforce_utf8: false) do %>
+    <%= submit_tag "Edit Watchlist", name: nil %>
 <% end %>
     
-<br>
-<h2>Securities (<%= Watchlist.roll_up_secs(@watchlist).count %>)</h2>
-<ul><% Watchlist.roll_up_secs(@watchlist).each do |sec| %>
-    <li><%= sec.symbol %> -<%= sec.change %> - <%= sec.changePercent %> - <%= sec.previousClose %></li>
-<% end %></ul>
-<br>
+<br><br>
+<h2><%= Watchlist.roll_up_secs(@watchlist).count %> Securities</h2>
+<%= form_tag(watchlist_securities_path(@watchlist), method:'GET', enforce_utf8: false) do %>
+    <%= submit_tag "View Securities", name: nil %>
+<% end %>
 
-<h3>Total Value: <%= Watchlist.total_up(@watchlist, "latestPrice") %></h3>
-<h3>Total Change %: <%= Watchlist.total_change(@watchlist) %></h3>
+<br>
+<h2>Recent Performance:</h2>
+<p>Total Watchlist Value: $<%= Watchlist.total_up(@watchlist, "latestPrice").round(2) %></p>
+<p>Total Change: $<%= Watchlist.total_up(@watchlist, 'change').round(2) %> (<%= Watchlist.total_change(@watchlist) %>%)</p>
