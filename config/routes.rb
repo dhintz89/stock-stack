@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root 'application#welcome'
   get '/securities/find' => 'securities#new'
   resources :users, except: [:index]
-  resources :securities, :watchlists
+  resources :securities
+  resources :watchlists do
+    resources :securities, only: [:index, :new, :create]
+  end
   post '/securities/:id' => 'securities#refresh'
 
 
