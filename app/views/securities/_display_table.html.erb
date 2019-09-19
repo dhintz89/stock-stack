@@ -1,0 +1,38 @@
+<table id="sec-index-table">
+    <tr>
+        <th>Symbol</th>
+        <th>Company</th>
+        <th>Latest Volume</th>
+        <th>Latest Price</th>
+        <th>Price Change</th>
+        <th>Percent Change</th>
+        <th>Change YTD</th>
+        <% if template == 'user' %>
+            <th>Watchlists</th>
+        <% else %>
+            <th>In Portfolio</th>
+        <% end %>
+        <th>Last Update</th>
+    <tr>
+    <% secs.each do |sec| %>
+        <tr>
+            <td><%= link_to sec.symbol, security_path(sec), class:"table-link" %></td>
+            <td><%= sec.companyName %></td>
+            <td><%= sec.latestVolume %></td>
+            <td>$<%= "%.2f" % sec.latestPrice.to_f %></td>
+            <td>$<%= "%.2f" % sec.change.to_f %></td>
+            <td><%= sec.changePercent.to_f.round(3) %>%</td>
+            <td>$<%= "%.2f" % sec.ytdChange.to_f %></td>
+            <% if template == 'user' %>
+                <td><%= sec.watchlists.count %></td>
+            <% else %>
+                <td><%= sec.watchlists.count > 0 ? "Yes" : "No" %></td>
+            <% end %>
+            <td><%= sec.updated_at.strftime('%b %e, %Y at %l:%M%P') %></td>
+        </tr>
+    <% end %>
+</table>
+<br>
+<%= form_tag(new_security_path, method: 'GET', enforce_utf8: false) do %>
+    <%= submit_tag "Lookup Security", name: nil %>
+<% end %>

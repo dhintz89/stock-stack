@@ -23,7 +23,7 @@ class Watchlist < ApplicationRecord
 
     def self.total_change(wl)
         change = total_up(wl, 'change') / total_up(wl, 'previousClose') * 100
-        change.round(3)
+        change.to_f.round(3)
     end
 
 end

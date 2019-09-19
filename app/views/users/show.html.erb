@@ -18,31 +18,4 @@
 <br><br>
 <h2><u>My Portfolio</u></h2>
 
-<table id="sec-index-table">
-    <tr>
-        <th>Symbol</th>
-        <th>Company</th>
-        <th>Latest Volume</th>
-        <th>Latest Price</th>
-        <th>Price Change</th>
-        <th>Percent Change</th>
-        <th>Change YTD</th>
-        <th>Watchlists</th>
-        <th>Info & Actions</th>
-    <tr>
-    <% @securities.each do |sec| %>
-        <tr>
-            <td><%= sec.symbol %></td>
-            <td><%= sec.companyName %></td>
-            <td><%= sec.latestVolume %></td>
-            <td><%= sec.latestPrice %></td>
-            <td><%= sec.change %></td>
-            <td><%= sec.changePercent %></td>
-            <td><%= sec.ytdChange %></td>
-            <td><%= sec.watchlists.count %></td>
-            <td><%= link_to "See Details", security_path(sec), class:"table-link" %></td>
-        </tr>
-    <% end %>
-</table>
-
-<%= link_to "Add a new Security", securities_find_path %>
+<%= render partial: 'securities/display_table', locals: {secs: @securities, template: 'user'} %>

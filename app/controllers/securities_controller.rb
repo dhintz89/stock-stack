@@ -2,8 +2,8 @@ class SecuritiesController < ApplicationController
 
     def index
         if params[:watchlist_id]
-            watchlist = Watchlist.find(params[:watchlist_id])
-            @securities = Watchlist.rolled_up(watchlist).map {|wl| wl.security}
+            @watchlist = Watchlist.find(params[:watchlist_id])
+            @securities = Watchlist.rolled_up(@watchlist).map {|wl| wl.security}
         else
             @securities = Security.all.limit(10)
         end

@@ -1,9 +1,10 @@
 <h1>Watchlists</h1>
+<br>
 
-<ul><% @watchlists.each do |wl| %>
-    <li><%= link_to wl.name, watchlist_path(wl) %> - <%= wl.description %>
+<ol><% @watchlists.each do |wl| %>
+    <li><%= link_to wl.name, watchlist_path(wl), class:"table-link" %> - <%= wl.description %>
         <ul>
-            <li><%= Watchlist.rolled_up(wl).count %> securities worth $ <%= Watchlist.total_up(wl, 'latestPrice') %>, a total change of <%= Watchlist.total_change(wl) %></li>
+            <li><%= Watchlist.rolled_up(wl).count %> <%= "security".pluralize(Watchlist.rolled_up(wl).count) %> worth $ <%= "%.2f" % Watchlist.total_up(wl, 'latestPrice').to_f %>, a total change of <%= Watchlist.total_change(wl).to_f.round(3) %>%</li>
         </ul>
-    </li>
-<% end %></ul>
+    </li><br>
+<% end %></ol>

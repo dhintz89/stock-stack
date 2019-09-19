@@ -5,12 +5,12 @@
 <% end %>
     
 <br><br>
-<h2><%= Watchlist.roll_up_secs(@watchlist).count %> Securities</h2>
+<h2><%= Watchlist.roll_up_secs(@watchlist).count %> <%= "Security".pluralize(Watchlist.roll_up_secs(@watchlist).count) %></h2>
 <%= form_tag(watchlist_securities_path(@watchlist), method:'GET', enforce_utf8: false) do %>
     <%= submit_tag "View Securities", name: nil %>
 <% end %>
 
 <br>
 <h2>Recent Performance:</h2>
-<p>Total Watchlist Value: $<%= Watchlist.total_up(@watchlist, "latestPrice").round(2) %></p>
-<p>Total Change: $<%= Watchlist.total_up(@watchlist, 'change').round(2) %> (<%= Watchlist.total_change(@watchlist) %>%)</p>
+<p>Total Watchlist Value: $<%= "%.2f" % Watchlist.total_up(@watchlist, "latestPrice").round(2) %></p>
+<p>Total Change: $<%= "%.2f" % Watchlist.total_up(@watchlist, 'change') %> (<%= Watchlist.total_change(@watchlist) %>%)</p>
