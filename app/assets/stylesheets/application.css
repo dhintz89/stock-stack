@@ -129,6 +129,20 @@
     100% { transform: translateX(-100%); }
 }
 
+.footer-section {
+    display: inline-block;
+    text-align: center;
+    width: 31%;
+    height: 90%;
+    padding: 0 1%;
+    border-left-width: 1%;
+    border-left-style: solid;
+    border-left-color: lightgrey;
+}
+
+.footer-section.first {
+    border-left-width: 0;
+}
 
 .form {
     width: 80%;

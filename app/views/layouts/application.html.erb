@@ -22,12 +22,14 @@
           <span id="site-title-img"><img src="/assets/StockStack_line2.png" alt="Welcome to StockStack!"></span>
         </div>
         <div class="profile">
+          <% if logged_in? %>
             <%= link_to image_tag('/assets/DanLoki.jpeg'), user_path(User.first.id) %>
-            <h3 style="position:relative;bottom:9%"><%= User.first.name %></h3>
+            <h3 style="position:relative;bottom:9%"><%= current_user.username %></h3>
+          <% end %>
         </div>
         <div class="marquis">
           <% if logged_in? %>
-            <p><%= current_user.securities.collect {|s| "#{s.symbol}: #{s.changePercent}"}.uniq.join(" || ") %></p>
+            <p><%= current_user.securities.collect {|s| "#{s.symbol}: #{s.changePercent.to_f.round(3)}"}.uniq.join(" || ") %></p>
           <% end %>
         </div>
       </header>
@@ -37,6 +39,15 @@
       </main>
       
       <footer>
+        <div class="footer-section first">
+          <p>There would normally be some cool links here</p>
+        </div>
+        <div class="footer-section">
+          <p>But I didn't have any content to add</p>
+        </div>
+        <div class="footer-section last">
+          <p>Plus I just wanted to get this finished up!</p>
+        </div>
       </footer>
     </body>
   </div>
