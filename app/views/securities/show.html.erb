@@ -15,13 +15,15 @@
 <div class="button_list">
 <h2><u>Actions</u></h2>
     <% if current_user.securities.include?(@security) %><br>
-        <h4>Associated Watchlists:</h4>
-        <% current_user.watchlists.select{|wl| wl.security_id.eql?(@security.id)}.each do |watchlist| %>
-            <ul><%= form_with(URL: "/watchlists/#{watchlist.id}", method: 'DELETE') do %>
-                <li><strong><%= link_to watchlist.name, watchlist_path(watchlist) %>:</strong>&nbsp;&nbsp; <i><%= watchlist.description %></i>&nbsp;&nbsp;-&nbsp; <%= submit_tag "Remove from Watchlist" %></li>
-            <% end %></ul><br>
-        <% end %>
-        <%= form_tag(new_watchlist_path, method: 'GET', enforce_utf8: false) do %>
+        <h4>Associated Watchlists:</h4><br>
+        <ul><% current_user.watchlists.select{|wl| wl.security_id.eql?(@security.id)}.each do |watchlist| %>
+            <li><%= form_tag("/watchlists/#{watchlist.id}", method: 'DELETE') do %>
+                <%= hidden_field_tag :sec_id, @security.id %>
+                <strong><%= link_to watchlist.name, watchlist_path(watchlist) %>:</strong>&nbsp;&nbsp; <i><%= watchlist.description %></i>&nbsp;&nbsp;-&nbsp; 
+                <%= submit_tag "Remove from Watchlist" %>
+            <% end %></li>
+        <% end %></ul><br>
+        <%= form_tag(new_security_watchlist_path(@security), method: 'GET', enforce_utf8: false) do %>
             <%= hidden_field_tag :sec_id, @security.id %>
             <%= submit_tag "Add to Watchlist", name: nil %>
         <% end %>
@@ -29,7 +31,7 @@
             <%= submit_tag "Remove from Portfolio", class: "submit-btn" %>
         <% end %><br>
     <% else %>
-        <%= form_tag(new_watchlist_path, method: 'GET', enforce_utf8: false) do %>
+        <%= form_tag(new_security_watchlist_path(@security), method: 'GET', enforce_utf8: false) do %>
             <%= hidden_field_tag :sec_id, @security.id %>
             <%= submit_tag "Add to Portfolio", name: nil %>
         <% end %>

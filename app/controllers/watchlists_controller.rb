@@ -1,10 +1,7 @@
 class WatchlistsController < ApplicationController
     before_action :require_login
 
-    # include securities as child objects in index and/or show page  (index - watchlist_securities.each....)
-
     # refresh watchlist -> watchlist_securities.each update(...)
-    # flow: user views a security -> @security = security.new(...)       user then adds to a watchlist -> @security.watchlist = ... | @security.save
 
     def index
         wl = current_user.watchlists.select(:name).distinct
@@ -49,8 +46,8 @@ class WatchlistsController < ApplicationController
     end
 
     def destroy
-        @watchlist = Watchlist.find(params[:id])
-        redirect_to securities_path
+        Watchlist.find(params[:id]).destroy
+        redirect_to security_path(params[:sec_id])
     end
 
     private

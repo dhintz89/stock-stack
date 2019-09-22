@@ -137,7 +137,8 @@
     padding: 0 1%;
     border-left-width: 1%;
     border-left-style: solid;
-    border-left-color: lightgrey;
+    border-left-color: rgba(0, 107, 14, 70%);
+    color: #5c5c5c;
 }
 
 .footer-section.first {

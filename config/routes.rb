@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root 'application#welcome'
   get '/securities/find' => 'securities#new'
   resources :users, except: [:index]
-  resources :securities
+  resources :securities do
+    resources :watchlists, only: [:new]
+  end
   resources :watchlists do
     resources :securities, only: [:index, :new, :create]
   end
