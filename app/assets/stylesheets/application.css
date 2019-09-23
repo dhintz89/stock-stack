@@ -243,3 +243,11 @@ th {
 ol ul li {
     text-indent: 50px;
 }
+
+.oauth_pic img {
+    height: 50px;
+    width: 50px;
+    display: block;
+    float: left;
+    margin-right: 2%;
+}

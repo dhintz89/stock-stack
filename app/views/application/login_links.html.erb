@@ -1,5 +1,20 @@
 <h1 style="font-size:3em;">Welcome to StockStack!</h1><br><br>
-<div style="text-align:left;">
-    <h2><%= link_to "Sign In", signin_path, class: 'table-link' %> to view your content</h2><br>
+
+<%= alert %><br>
+
+<!-- Can't use manual login and OAUTH without custom coding - add in future release -->
+<!-- <div style="text-align:left;">
+    <h2><%= link_to "Sign In", signin_path, class: 'table-link' %> to view your content</h2><br> 
     <h2><%= link_to "Sign Up", new_user_path, class: 'table-link' %> if you are new to the site</h2>
+</div>
+<br><br><h2>or</h2><br>
+-->
+
+<div style="width:23%;text-align:center">
+    <div style="height:15px">
+        <%= link_to image_tag('/assets/facebook.png'), '/auth/facebook', class: 'oauth_pic' %>
+    </div>
+    <div>
+        <h3><%= link_to "Log In with Facebook to get started.", '/auth/facebook', class: 'table-link' %></h3>
+    </div>
 </div>

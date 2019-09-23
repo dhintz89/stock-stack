@@ -30,10 +30,12 @@ gem 'rspec-rails'
 gem 'capybara'
 gem 'thin'
 gem 'pry'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 # pull info from stock market
 gem 'stock_quote', '~> 3.0.0'
-gem 'dotenv-rails'
+gem 'dotenv-rails', groups: [:development, :test]
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

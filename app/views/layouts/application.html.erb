@@ -23,7 +23,7 @@
         </div>
         <div class="profile">
           <% if logged_in? %>
-            <%= link_to image_tag('/assets/DanLoki.jpeg'), user_path(User.first.id) %>
+            <%= link_to image_tag(current_user.profile_pic), user_path(current_user.id) %>
             <h3 style="position:relative;bottom:9%"><%= current_user.username %></h3>
           <% end %>
         </div>
