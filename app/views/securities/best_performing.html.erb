@@ -1,0 +1,10 @@
+<h1>Best Performing Securities</h1>
+<ol><% @securities.each do |sec| %>
+    <li> <%= sec.symbol %>
+        <ul>
+            <li><%= sec.changePercent %></li>
+            <li><%= sec.change %></li>
+            <li><%= sec.latestPrice %></li>
+        </ul>
+    </li>
+<% end %></ol>

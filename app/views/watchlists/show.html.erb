@@ -12,5 +12,5 @@
 
 <br>
 <h2>Recent Performance:</h2>
-<p>Total Watchlist Value: $<%= "%.2f" % Watchlist.total_up(@watchlist, "latestPrice") %></p>
-<p>Total Change: $<%= "%.2f" % Watchlist.total_up(@watchlist, 'change') %> (<%= Watchlist.total_change(@watchlist) %>%)</p>
+<p>Total Watchlist Value: $<%= Watchlist.total_up(@watchlist, "latestPrice") %></p>
+<p>Total Change: $<%= Watchlist.total_up(@watchlist, 'change') %> (<%= Watchlist.total_change(@watchlist) %>%)</p>

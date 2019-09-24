@@ -10,6 +10,10 @@ class SecuritiesController < ApplicationController
         end
     end
 
+    def best_performing
+        @securities = Security.best_performing
+    end
+
     def new
         @security = Security.new
     end

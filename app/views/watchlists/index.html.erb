@@ -4,7 +4,7 @@
 <ol><% @watchlists.each do |wl| %>
     <li><%= link_to wl.name, watchlist_path(wl), class:"table-link" %> - <%= wl.description %>
         <ul>
-            <li><%= Watchlist.rolled_up(wl).count %> <%= "security".pluralize(Watchlist.rolled_up(wl).count) %> worth $ <%= "%.2f" % Watchlist.total_up(wl, 'latestPrice').to_f %>, a total change of <%= Watchlist.total_change(wl).to_f.round(3) %>%</li>
+            <li><%= Watchlist.rolled_up(wl).count %> <%= "security".pluralize(Watchlist.rolled_up(wl).count) %> worth $ <%= Watchlist.total_up(wl, 'latestPrice') %>, a total change of <%= Watchlist.total_change(wl) %>%</li>
         </ul>
     </li><br>
 <% end %></ol>

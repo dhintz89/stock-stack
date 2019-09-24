@@ -4,9 +4,9 @@
 
 <br><br><h2><u>Summary</u></h2><br>
 <ul>
-    <li>Latest Price: $<%= "%.2f" % @security.latestPrice.to_f %></li>
-    <li>Change: $<%= "%.2f" % @security.change.to_f %> (<%= @security.changePercent.to_f.round(3) %>%)</li>
-    <li>YTD Change: $<%= "%.2f" % @security.ytdChange.to_f %></li>
+    <li>Latest Price: $<%= @security.latestPrice %></li>
+    <li>Change: $<%= @security.change %> (<%= @security.changePercent %>%)</li>
+    <li>YTD Change: $<%= @security.ytdChange %></li>
     <li>Latest Volume: <%= @security.latestVolume %></li>
     <li>Latest Update: <%= @security.latestUpdate %></li>
 </ul>

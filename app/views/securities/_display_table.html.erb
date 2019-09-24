@@ -19,10 +19,10 @@
             <td><%= link_to sec.symbol, security_path(sec), class:"table-link" %></td>
             <td><%= sec.companyName %></td>
             <td><%= sec.latestVolume %></td>
-            <td>$<%= "%.2f" % sec.latestPrice.to_f %></td>
-            <td>$<%= "%.2f" % sec.change.to_f %></td>
-            <td><%= sec.changePercent.to_f.round(3) %>%</td>
-            <td>$<%= "%.2f" % sec.ytdChange.to_f %></td>
+            <td>$<%= sec.latestPrice%></td>
+            <td>$<%= sec.change%></td>
+            <td><%= sec.changePercent %>%</td>
+            <td>$<%= sec.ytdChange%></td>
             <% if template == 'user' %>
                 <td><%= sec.watchlists.count %></td>
             <% else %>
