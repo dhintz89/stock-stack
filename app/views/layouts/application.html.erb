@@ -22,13 +22,17 @@
           <span id="site-title-img"><img src="/assets/StockStack_line2.png" alt="Welcome to StockStack!"></span>
         </div>
         <div class="profile">
-          <% if logged_in? %>
-            <%= link_to image_tag(current_user.profile_pic), user_path(current_user.id) %>
-            <h3 style="position:relative;bottom:9%"><%= current_user.username %></h3>
+          <% if user_signed_in? %>
+            <% if current_user.image %>
+              <%= link_to image_tag(current_user.image), user_path(current_user) %>
+            <% else %>
+              <%= link_to "Profile Actions", user_path(current_user), style: '' %>
+            <% end %>
+            <h3 style="position:relative;bottom:9%"><%= current_user.name %></h3>
           <% end %>
         </div>
         <div class="marquis">
-          <% if logged_in? %>
+          <% if user_signed_in? %>
             <p><%= current_user.securities.collect {|s| "#{s.symbol}: #{s.changePercent.to_f.round(3)}"}.uniq.join(" || ") %></p>
           <% end %>
         </div>

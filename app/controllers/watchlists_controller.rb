@@ -1,5 +1,6 @@
 class WatchlistsController < ApplicationController
-    before_action :require_login
+    # before_action :require_login
+    before_action :authenticate_user!
 
     # refresh watchlist -> watchlist_securities.each update(...)
 
@@ -35,7 +36,7 @@ class WatchlistsController < ApplicationController
 
     def update
         @watchlist = Watchlist.find(params[:id])
-        Watchlist.roll_up(@watchlist).each do |wl|
+        Watchlist.rolled_up(@watchlist).each do |wl|
             wl.update(watchlist_params)
         end
         redirect_to watchlist_path(@watchlist)

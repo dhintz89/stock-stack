@@ -23,6 +23,10 @@
     color: white;
  }
 
+ a {
+    color: white;
+ }
+
  header {
     display: flex; 
     flex-shrink: 0;

@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'application#welcome'
+  
+  # sessions routes
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
   # users routes
-  resources :users, except: [:index]
+  get '/users/:id' => 'users#show', as: 'user'
 
   # securities routes
   get '/securities/find' => 'securities#new'
@@ -19,9 +23,4 @@ Rails.application.routes.draw do
   end
   post '/securities/:id' => 'securities#refresh'
 
-  # sessions routes
-  get '/signin' => 'sessions#new'
-  get '/auth/facebook/callback' => 'sessions#create'
-  post '/signin' => 'sessions#create'
-  post '/signout' => 'sessions#destroy'
 end

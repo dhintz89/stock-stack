@@ -32,6 +32,7 @@ gem 'thin'
 gem 'pry'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'devise'
 
 # pull info from stock market
 gem 'stock_quote', '~> 3.0.0'

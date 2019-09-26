@@ -2,9 +2,9 @@
 <ol><% @securities.each do |sec| %>
     <li> <%= sec.symbol %>
         <ul>
-            <li><%= sec.changePercent %></li>
-            <li><%= sec.change %></li>
-            <li><%= sec.latestPrice %></li>
+            <li>Change Percent: <%= sec.changePercent %></li>
+            <li>Change: <%= sec.change %></li>
+            <li>Latest Price: <%= sec.latestPrice %></li>
         </ul>
-    </li>
+    </li><br>
 <% end %></ol>

@@ -3,15 +3,15 @@
 <div class="button_list">
     <h2><u>Profile Actions</u></h2></br>
 
-    <%= form_tag(edit_user_path(current_user), method: 'GET') do %>
+    <%= form_tag(edit_user_registration_path, method: 'GET') do %>
         <%= submit_tag "Edit Profile Details" %>
     <% end %>
 
-    <%= form_tag(signout_path) do %>
+    <%= form_tag(destroy_user_session_path, method: 'DELETE') do %>
         <%= submit_tag "Sign Out" %>
     <% end %>
 
-    <%= form_tag("/users/#{current_user.id}", method: "DELETE") do %>
+    <%= form_tag("/users", method: "DELETE") do %>
         <%= submit_tag "Delete Profile" %>
     <% end %>
 </div>

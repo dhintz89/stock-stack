@@ -13,7 +13,7 @@ class Watchlist < ApplicationRecord
 
     def self.total_up(wl, att)
         total = 0
-        roll_up_secs(wl).each {|sec| total += sec.send(att).to_f}
+        roll_up_secs(wl).each {|sec| total += sec.send(att)}
         total
     end
 

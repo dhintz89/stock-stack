@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
     include ApplicationHelper
 
     def welcome
-        if logged_in?
+        if user_signed_in?
             render 'welcome'
         else
             render 'login_links'
