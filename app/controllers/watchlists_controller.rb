@@ -1,8 +1,7 @@
 class WatchlistsController < ApplicationController
-    # before_action :require_login
     before_action :authenticate_user!
 
-    # refresh watchlist -> watchlist_securities.each update(...)
+    # future enhancement: refresh watchlist -> watchlist_securities.each update(...)
 
     def index
         wl = current_user.watchlists.select(:name).distinct

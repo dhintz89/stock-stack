@@ -5,6 +5,7 @@ class Security < ApplicationRecord
     validates :symbol, :companyName, presence: true
     before_validation :symbol_upcase
     before_validation :convert_decimals
+    
     scope :best_performing, -> { order(changePercent: :desc).limit(5) }
 
     def self.look_up_security(sec_hash)
